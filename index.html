@@ -4,13 +4,93 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=keyboard_double_arrow_down" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <title>Website</title>
 </head>
 <body>
-    <main>
-        <header>
-            <h1>Сайт</h1>
-        </header>
-    </main>
+    <div class="scroll-container" id="scroll-container">
+        <div class="main-screen" id="main-screen">
+            <section>
+                <h1>Самый лучший сайт</h1>
+            </section>
+            <section>
+                <h2>С одной строки рождается произведение...</h2>
+            </section>
+            <button class="anchor_btn" onclick="smoothScrollTo('cards-section')">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7 10L12 15L17 10" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M7 14L12 19L17 14" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </button>
+        </div>
+
+        <div id="cards-section">
+            <div class="cards-grid">
+                <div class="card">
+                    <h3>ФИО</h3>
+                    <img src="https://i.pinimg.com/736x/d1/8b/ef/d18bef08d46c2568b5b4c64a1aad7da0.jpg">
+                    <button class="vote-btn">Проголосовать</button>
+                </div>
+                <div class="card">
+                    <h3>ФИО</h3>
+                    <img src="https://i.pinimg.com/736x/d1/8b/ef/d18bef08d46c2568b5b4c64a1aad7da0.jpg">
+                    <button class="vote-btn">Проголосовать</button>
+                </div>
+                <div class="card">
+                    <h3>ФИО</h3>
+                    <img src="https://i.pinimg.com/736x/d1/8b/ef/d18bef08d46c2568b5b4c64a1aad7da0.jpg">
+                    <button class="vote-btn">Проголосовать</button>
+                </div>
+                <div class="card">
+                    <h3>ФИО</h3>
+                    <img src="https://i.pinimg.com/736x/d1/8b/ef/d18bef08d46c2568b5b4c64a1aad7da0.jpg">
+                    <button class="vote-btn">Проголосовать</button>
+                </div>
+            </div>
+            <button class="anchor_btn up" onclick="smoothScrollTo('main-screen')">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7 10L12 15L17 10" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M7 14L12 19L17 14" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Блокировка скролла
+        document.addEventListener('wheel', preventDefault, { passive: false });
+        document.addEventListener('touchmove', preventDefault, { passive: false });
+        
+        function preventDefault(e) {
+            e.preventDefault();
+        }
+        
+        function smoothScrollTo(targetId) {
+            const target = document.getElementById(targetId);
+            const container = document.getElementById('scroll-container');
+            
+            if (targetId === 'cards-section') {
+                target.style.display = 'block';
+            }
+            
+            if (target) {
+                setTimeout(() => {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }, 50);
+                
+                setTimeout(() => {
+                    container.style.overflowY = 'auto';
+                }, 1000);
+            }
+        }
+    </script>
 </body>
 </html>
